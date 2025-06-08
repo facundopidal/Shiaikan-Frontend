@@ -143,7 +143,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.getEvents();
   }
 
-  isMuted: boolean = false;
+  isMuted: boolean = true;
 
   toggleMute() {
     const video = this.heroVideo?.nativeElement;
