@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Viner ITC";
+  src: url("../public/fonts/VINERITC.woff2") format("woff2");
+}
+
+@utility font-viner {
+  font-family: "Viner ITC";
+}
