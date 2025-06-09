@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CompetitorService } from '../../services/competitor.service';
@@ -41,7 +42,53 @@ import { Competitor } from '../../types/competitor';
 export class CompetitorsComponent implements OnInit {
   competitors: Competitor[] = [];
 
-  constructor(private competitorService: CompetitorService) {}
+  constructor(
+    private competitorService: CompetitorService,
+    private title: Title,
+    private meta: Meta
+  ) {
+    this.title.setTitle('Competidores - Shiaikan Dojo - Mar del Plata');
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Listado de competidores de Shiaikan Dojo en Mar del Plata. Conocé a nuestros judokas, sus logros y trayectoria.',
+    });
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Competidores - Shiaikan Dojo - Mar del Plata',
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content:
+        'Listado de competidores de Shiaikan Dojo en Mar del Plata. Conocé a nuestros judokas, sus logros y trayectoria.',
+    });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: 'https://shiaikandojo.netlify.app/competidores',
+    });
+    this.meta.updateTag({
+      property: 'og:image',
+      content: '/home/shiaikan-logo.jpg',
+    });
+    this.meta.updateTag({
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
+    this.meta.updateTag({
+      name: 'twitter:title',
+      content: 'Competidores - Shiaikan Dojo - Mar del Plata',
+    });
+    this.meta.updateTag({
+      name: 'twitter:description',
+      content:
+        'Listado de competidores de Shiaikan Dojo en Mar del Plata. Conocé a nuestros judokas, sus logros y trayectoria.',
+    });
+    this.meta.updateTag({
+      name: 'twitter:image',
+      content: '/home/shiaikan-logo.jpg',
+    });
+  }
 
   ngOnInit() {
     this.competitorService.getCompetitors().subscribe({

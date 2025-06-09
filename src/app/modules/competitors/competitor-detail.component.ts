@@ -6,6 +6,7 @@ import { belts } from '../../data/belts';
 import { AchievementComponent } from '../../components/achievement/achievement.component';
 import { GalleryComponent } from '../../components/gallery/gallery.component';
 import { SafeUrlPipe } from '../../pipes/safe-url.pipe';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-competitor-detail',
@@ -128,7 +129,9 @@ export class CompetitorDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private competitorService: CompetitorService
+    private competitorService: CompetitorService,
+    private titleService: Title,
+    private metaService: Meta
   ) {}
 
   ngOnInit() {
@@ -143,6 +146,20 @@ export class CompetitorDetailComponent implements OnInit {
       )!;
       // Galería: omite la primera foto (ya se muestra como principal)
       this.galleryImages = this.competitor.fotos?.slice(1) ?? [];
+      // SEO dinámico
+      this.titleService.setTitle(`${this.competitor.nombre} - Shiaikan Dojo`);
+      this.metaService.updateTag({
+        name: 'description',
+        content: `Perfil, logros y videos de ${this.competitor.nombre} en Shiaikan Dojo.`,
+      });
+      this.metaService.updateTag({
+        property: 'og:title',
+        content: `${this.competitor.nombre} - Shiaikan Dojo`,
+      });
+      this.metaService.updateTag({
+        property: 'og:description',
+        content: `Perfil, logros y videos de ${this.competitor.nombre} en Shiaikan Dojo.`,
+      });
     });
   }
 }

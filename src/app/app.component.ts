@@ -15,5 +15,5 @@ import { FooterComponent } from './components/footer/footer.component';
   styles: [],
 })
 export class AppComponent {
-  name = 'Angular';
+  name = 'Shiaikan Dojo';
 }

@@ -6,6 +6,7 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HomeService } from '../../services/home.service';
 import { Achievement } from '../../types/logro';
@@ -132,6 +133,55 @@ export class HomeComponent implements OnInit, AfterViewInit {
   videoUrl: string = '';
   achievements: Achievement[] = [];
   events: Event[] = [];
+
+  constructor() {
+    const title = inject(Title);
+    const meta = inject(Meta);
+    title.setTitle('Shiaikan Dojo - Judo en Mar del Plata');
+    meta.updateTag({
+      name: 'description',
+      content:
+        'Shiaikan Dojo - Judo - Artes Marciales en Mar del Plata. Conocé a nuestros competidores, eventos y logros.',
+    });
+    meta.updateTag({
+      property: 'og:title',
+      content: 'Shiaikan Dojo - Judo en Mar del Plata',
+    });
+    meta.updateTag({
+      property: 'og:description',
+      content:
+        'Judo - Artes Marciales en Mar del Plata. Conocé a nuestros competidores, eventos y logros.',
+    });
+    meta.updateTag({
+      property: 'og:type',
+      content: 'website',
+    });
+    meta.updateTag({
+      property: 'og:url',
+      content: 'https://shiaikandojo.netlify.app/',
+    });
+    meta.updateTag({
+      property: 'og:image',
+      content: '/home/shiaikan-logo.jpg',
+    });
+    meta.updateTag({
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
+    meta.updateTag({
+      name: 'twitter:title',
+      content: 'Shiaikan Dojo - Judo en Mar del Plata',
+    });
+    meta.updateTag({
+      name: 'twitter:description',
+      content:
+        'Judo - Artes Marciales en Mar del Plata. Conocé a nuestros competidores, eventos y logros.',
+    });
+    meta.updateTag({
+      name: 'twitter:image',
+      content: '/home/shiaikan-logo.jpg',
+    });
+  }
 
   scrollToInfo() {
     console.log(this.infoSection);

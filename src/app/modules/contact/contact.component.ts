@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -89,4 +90,48 @@ import { Component } from '@angular/core';
   `,
   styles: ``,
 })
-export class ContactComponent {}
+export class ContactComponent {
+  constructor(private title: Title, private meta: Meta) {
+    this.title.setTitle('Contacto - Shiaikan Dojo - Mar del Plata');
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Contactá a Shiaikan Dojo en Mar del Plata. Ubicación, redes sociales y medios de contacto para consultas sobre clases de Judo y eventos.',
+    });
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Contacto - Shiaikan Dojo - Mar del Plata',
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content:
+        'Contactá a Shiaikan Dojo en Mar del Plata. Ubicación, redes sociales y medios de contacto para consultas sobre clases de Judo y eventos.',
+    });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: 'https://shiaikandojo.netlify.app/contact',
+    });
+    this.meta.updateTag({
+      property: 'og:image',
+      content: '/home/shiaikan-logo.jpg',
+    });
+    this.meta.updateTag({
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
+    this.meta.updateTag({
+      name: 'twitter:title',
+      content: 'Contacto - Shiaikan Dojo - Mar del Plata',
+    });
+    this.meta.updateTag({
+      name: 'twitter:description',
+      content:
+        'Contactá a Shiaikan Dojo en Mar del Plata. Ubicación, redes sociales y medios de contacto para consultas sobre clases de Judo y eventos.',
+    });
+    this.meta.updateTag({
+      name: 'twitter:image',
+      content: '/home/shiaikan-logo.jpg',
+    });
+  }
+}
